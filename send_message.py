@@ -38,6 +38,6 @@ def send_pushplus(pushplus_key, title, message):
         if response.json()['code'] == 200:
             logging.info('PushPlus推送成功')
         else:
-            logging.info('PushPlus推送失败')
+            logging.info(f'PushPlus推送失败,{response.text}')
     else:
         logging.warning("PUSHPLUS_KEY 没有配置,不推送消息")

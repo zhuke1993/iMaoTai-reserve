@@ -74,7 +74,7 @@ for section in configs.sections():
             r_success, r_content = process.reservation(reservation_params, mobile)
             # 为了防止漏掉推送异常，所有只要有一个异常，标题就显示失败
             if not r_success:
-                s_title = '！！失败！！茅台预约'
+                s_title = '! ！！失败！！!茅台预约'
             s_content = s_content + r_content + shopInfo + "\n"
             # 领取小茅运和耐力值
             process.getUserEnergyAward(mobile)
@@ -83,4 +83,5 @@ for section in configs.sections():
         logging.error(e)
 
 # 推送消息
-send_message.send_server_chan(config.SCKEY, s_title, s_content)
+# send_message.send_server_chan(config.SCKEY, s_title, s_content)
+send_message.send_pushplus(config.PUSH_TOKEN, s_title, s_content)
